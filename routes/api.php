@@ -9,7 +9,8 @@ use App\Http\Controllers\Api\{
     // GetCitiesController
 
     BranchController,
-    AgentController
+    AgentController,
+    ReportController
 };
 
 /*
@@ -35,11 +36,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('tutors', [TutorController::class, 'index']);
     Route::get('tutors/{id}', [TutorController::class, 'show']);
 
-    Route::get('branches', [BranchController::class, 'index']);
-    Route::post('branches', [BranchController::class, 'store']);
-    Route::get('branches/{id}', [BranchController::class, 'show']);
-    Route::patch('branches/{id}', [BranchController::class, 'update']);
-    Route::delete('branches/{id}', [BranchController::class, 'destroy']);
+    Route::post('reports', [ReportController::class, 'store']);
+    // route to download photo
+    Route::get('reports/{id}/photo', [ReportController::class, 'downloadPhoto']);
 
     /**
      * Dangerous route, only for development purpose
